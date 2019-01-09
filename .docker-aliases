@@ -1,0 +1,24 @@
+# List all Docker Containers
+alias dcl="docker container ls"
+
+# Docker Run
+function __dr {
+    docker run "$@";
+}
+alias dr='__dr'
+
+# Stop and Remove all Containers
+function __dsprm {
+    for container in "$@"; do
+            docker stop "$container" && docker rm "$container";
+    done
+}
+alias dsprm='__dsprm'
+
+# Output Container IP
+function __dip {
+    for container in "$@"; do
+            docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" "$container";
+    done
+}
+alias dip='__dip'
