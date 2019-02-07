@@ -7,6 +7,12 @@ function __dr {
 }
 alias dr='__dr'
 
+# Docker Run (Interactive) and Remove Container
+function __drrmit {
+    dr --rm -it "$@";
+}
+alias drrmit='__drrmit'
+
 # Stop and Remove all Containers
 function __dsprm {
     for container in "$@"; do
